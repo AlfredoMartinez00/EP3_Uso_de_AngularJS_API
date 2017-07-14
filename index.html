@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="peliculas">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Peliculas y más</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="./js/angular/angular.min.js" charset="utf-8"></script>
+  <script src="./js/angular/angular-resource.min.js" charset="utf-8"></script>
+  <script src="./js/angular/FirstController.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function(){$('.carousel').carousel();});
+  </script>
+
+
+</head>
+<body background="images/triforce-triangles.jpg" ng-controller="MoviesController" >
+  <nav class="red" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><img width="100" heigth="100" src="images/series.png"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="videojuegos.html">Videojuegos</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="videojuegos.html">Videojuegos</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Movies & Videogames</h1>
+      <div class="row center" style="color:white;">
+        <h5 class="header col s12 light">Pagina dedicada al mundo de las peliculas y videojuegos.</h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">¿Como se diseño esta página?</a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+
+  <div ng-repeat="movie in movies">
+    <div class="container">
+      <div class="section">
+        <div class="col s12 m7">
+          <div class="card horizontal">
+            <div  class="card-image">
+              <img  src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content" style="background-color:black;">
+                <label>Sinopsis:</label>
+                <p style="color:white; font-size:11px;">{{movie.overview}}</p>
+                <label>Fecha de lanzamiento:</label>
+                <p style="color:white;">{{movie.release_date}}</p>
+                <label>Popularidad:</label>
+                <p style="color:white;">{{movie.popularity}}</p>
+              </div>
+              <div class="card-action red">
+                <a>Disponible en :</a>
+                <a href="https://www.netflix.com"><img src="images/Netflix-new-icon.png" width="30" height="30"></a>
+                <a href="https://www.hbo.com"><img src="images/My_HBO.png" width="30" height="30"></a>
+                <a href="https://youtube.com"><img src="images/índice.png" width="30" height="30"></a>
+                <a href="https://amazon.com.mx/prime"><img src="images/Amazon-prime.png" width="30" height="30"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <center><h2 style="color:white;">Comentarios</h2></center>
+  <div class="container" ng-controller="FirstController">
+    <div class="section">
+      <div class="row">
+        <center><h2>Sección de comentarios</h2></center>
+        <div class="input-field col s6">
+          <input id="nombre" style="color:white;" ng-model="nombre" type="text" class="validate" placeholder="Placeholder" pattern="[a-zA-Z]+">
+          <label for="first_name">Nombre:</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea style="color:white;" id="textarea" ng-model="texto" ng-keyup="contar()"  class="materialize-textarea"></textarea>
+          <label for="textarea1">Comentario:</label>
+          <p style="color:white;">Restan: {{restante}}</p>
+        </div>
+        <div class="col s6">
+          <button ng-click="publicar()" class="btn waves-effect waves-light" type="submit" name="action">Publicar
+            <i class="material-icons right">send</i>
+          </button>
+          <div ng-repeat="post in arreglo">
+            <ul class="collection" style="width:200%">
+              <li class="collection-item avatar" style="width:100%">
+                <i class="material-icons circle green">perm_identity</i>
+                <h6>El usuario {{nombres[$index].post}} ha escrito:</h6>
+                <p>
+                  {{post.post}}
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Información de la evidencia de producto</h5>
+          <p class="grey-text text-lighten-4">
+            Desarrollar un sistema web con operaciones a servicios web, en este caso, se trata de un sistema web de peliculas, donde se
+            muestra la información relevante así como la posibilidad de crear comentarios.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+</html>

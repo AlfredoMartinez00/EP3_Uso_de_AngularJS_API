@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="peliculas">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Peliculas y más</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="./js/angular/angular.min.js" charset="utf-8"></script>
+  <script src="./js/angular/angular-resource.min.js" charset="utf-8"></script>
+  <script src="./js/angular/FirstController.js" charset="utf-8"></script>
+
+
+</head>
+<body background="images/triforce-triangles.jpg" ng-controller="MoviesController" >
+  <nav class="red" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><img width="100" heigth="100" src="images/series.png"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="videojuegos.html">Videojuegos</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="videojuegos.html">Videojuegos</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Movies & Videogames</h1>
+      <div class="row center" style="color:white;">
+        <h5 class="header col s12 light">Pagina dedicada al mundo de las peliculas y videojuegos.</h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">¿Como se diseño esta página?</a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+        <div class="col s6">
+          <div ng-repeat="movie in movies">
+            <div ng-repeat="f in movie.genre_ids">
+            <!--  {{f}} !-->
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<div ng-repeat="movie in movies">
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container" ng-controller="FirstController">
+    <div class="section">
+      <div class="row">
+        <center><h2 style="color:white;">Sección de comentarios</h2></center>
+        <div class="input-field col s6">
+          <input style="color:white;" ng-model="nombre" type="text" class="validate" placeholder="Placeholder">
+          <label for="first_name">Nombre:</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="textarea" ng-model="texto" ng-keyup="contar()" class="materialize-textarea"></textarea>
+          <label for="textarea1">Comentario:</label>
+          {{restante}}
+        </div>
+        <div class="col s6">
+          <a href="#" ng-click="publicar()">Publicar</a><br>
+          <a href="#" ng-click="ver()">Ver mi controlador</a><br>
+          <div ng-repeat="post in arreglo">
+            {{post.post}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+  </body>
+</html>
